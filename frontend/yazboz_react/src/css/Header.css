@@ -1,0 +1,103 @@
+/* Ana Navbar Konteyneri */
+.main-cont {
+  display: flex;
+  justify-content: space-between; /* Sol, orta ve sağ grupları eşit dağıtır */
+  align-items: center;            /* Dikeyde tam ortalar */
+  padding: 15px 40px;
+  background-color: #101010;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Şık alt gölge */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+    border-radius: 5px;
+}
+
+/* 1. Sol Taraf (Logo) */
+.main-cont > div:first-child img {
+  height: 40px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 3px;
+}
+
+/* 2. Orta Taraf (Kategori Linkleri) */
+.main-cont > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  gap: 24px; /* Linkler arası boşluk */
+}
+
+/* Link Stillerı ve Alt Çizgi Animasyonu */
+.selections {
+  text-decoration: none;
+  color: #dadcdf;
+  font-weight: 500;
+  font-size: 15px;
+  position: relative;
+  padding: 6px 0;
+  transition: color 0.3s ease;
+}
+
+.selections:hover {
+  color: #828385;
+}
+
+/* Hover durumunda hafiften çıkan ince çizgi efekti */
+.selections::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #2ecc71; /* Aktif çizgi rengi */
+  transition: width 0.3s ease;
+}
+
+.selections:hover::after {
+  width: 100%;
+}
+
+/* 3. Sağ Taraf (Giriş Yap Butonu) */
+.main-cont > div:last-child a {
+  text-decoration: none;
+  background-color: #035c03;
+  background: linear-gradient(135deg, #27ae60 0%, #1e824c 100%); /* Koyu yeşil degrade */
+  color: #ffffff;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 6px rgba(11, 161, 0, 0.3);
+}
+
+.main-cont > div:last-child a:hover {
+  background-color: #035c03;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(11, 161, 0, 0.4);
+}
+
+.main-cont > div:last-child a:active {
+  transform: translateY(0);
+}
+
+/* Mobil / Küçük Ekran Uyum Mantığı (Responsive) */
+@media (max-width: 768px) {
+  .main-cont {
+    padding: 15px 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .main-cont > div:nth-child(2) {
+    order: 3; /* Mobil ekranda linkleri en alta indirir */
+    width: 100%;
+    justify-content: center;
+    gap: 15px;
+    overflow-x: auto; /* Çok küçük ekranda yan yana kaydırılabilir */
+    padding-top: 10px;
+    border-top: 1px solid #edf2f7;
+  }
+}
