@@ -25,7 +25,7 @@ public class FileStorageService {
             Files.copy(file.getInputStream(), this.rootLocation.resolve(fileName));
 
             // Frontend'in erişebileceği URL'i dönüyoruz
-            return "http://localhost:8080/uploads/" + fileName;
+            return "http://localhost:8081/uploads/" + fileName;
         } catch (Exception e) {
             throw new RuntimeException("Dosya yüklenemedi!", e);
         }

@@ -37,6 +37,9 @@ public class Articles {
 	@Column(name = "content", columnDefinition = "TEXT")
 	private String content;
 	
+	@Column(name = "type")
+	private String type;
+	
 	@Column(name = "image_url")
     private String imageUrl;
 

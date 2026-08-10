@@ -1,5 +1,7 @@
 package com.yigithas.config;
 
+import java.nio.file.Paths;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -9,9 +11,9 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        // http://localhost:8080/uploads/resim.jpg isteği geldiğinde
-        // projenin ana dizinindeki "uploads" klasörüne bakmasını sağlıyoruz.
+        String uploadPath = Paths.get("uploads").toAbsolutePath().toUri().toString();
+
         registry.addResourceHandler("/uploads/**")
-                .addResourceLocations("file:uploads/");
+                .addResourceLocations(uploadPath);
     }
 }

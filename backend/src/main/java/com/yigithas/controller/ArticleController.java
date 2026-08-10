@@ -36,6 +36,7 @@ public class ArticleController {
     public ResponseEntity<Articles> createArticle(
             @RequestParam("title") String title,
             @RequestParam("content") String content,
+            @RequestParam("type") String type,
             @RequestParam("writerId") Long writerId,
             @RequestParam("image") MultipartFile imageFile) {
 
@@ -44,6 +45,7 @@ public class ArticleController {
         Articles article = new Articles();
         article.setTitle(title);
         article.setContent(content);
+        article.setType(type);
         article.setImageUrl(imageUrl);
 
         return ResponseEntity.ok(articleService.saveArticles(article, writerId));
@@ -56,7 +58,7 @@ public class ArticleController {
     }
 
     // 3. 10'lu Pageable Liste
-    @GetMapping
+    @GetMapping(path = "/list")
     public ResponseEntity<Page<ArticleListDto>> getArticles(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {

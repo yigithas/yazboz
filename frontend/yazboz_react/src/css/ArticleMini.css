@@ -1,0 +1,157 @@
+/* Ana Kart Kutusu */
+.article-mini-card {
+  display: flex;
+  gap: 18px;
+  background-color: #1a1f1d;
+  border: 1px solid #28362f;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.article-mini-card:hover {
+  transform: translateY(-3px);
+  border-color: #2ecc71;
+  box-shadow: 0 8px 20px rgba(46, 204, 113, 0.12);
+}
+
+/* Sol Taraf: Görsel Kutusu */
+.mini-card-image-wrapper {
+  width: 180px;
+  height: 120px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #0d1110;
+}
+
+.mini-card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.article-mini-card:hover .mini-card-image-wrapper img {
+  transform: scale(1.06);
+}
+
+/* Sağ Taraf: İçerik Alanı */
+.mini-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+}
+
+.mini-card-title {
+  color: #e0e6e3;
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.2s ease;
+}
+
+.article-mini-card:hover .mini-card-title {
+  color: #2ecc71;
+}
+
+.mini-card-summary {
+  color: #a0aab0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  margin: 0 0 8px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.mini-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.read-more-btn {
+  color: #2ecc71;
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.article-mini-card:hover .read-more-btn {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .article-mini-card {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .mini-card-image-wrapper {
+    width: 100%;
+    height: 160px;
+  }
+}
+
+.pagination-btn {
+  background-color: #1a1f1d;
+  color: #e0e6e3;
+  border: 1px solid #28362f;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+/* Buton Hover (Üzerine Gelindiğinde) */
+.pagination-btn:hover:not(:disabled) {
+  background-color: #2ecc71;
+  color: #0d1110;
+  border-color: #2ecc71;
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Pasif (Disabled) Buton Stili */
+.pagination-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  border-color: #1a1f1d;
+}
+
+/* Sayfa Bilgisi Metni */
+.pagination-info {
+  color: #a0aab0;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.pagination-current {
+  color: #2ecc71;
+  font-weight: 600;
+}
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #28362f;
+}

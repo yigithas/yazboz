@@ -7,6 +7,7 @@ public record ArticleDetailDto(
     Long id,
     String title,
     String content,
+    String type,
     String imageUrl,
     String writerNickName,
     LocalDateTime createdAt
@@ -17,6 +18,7 @@ public record ArticleDetailDto(
             article.getId(),
             article.getTitle(),
             article.getContent(),
+            article.getType(),
             article.getImageUrl(),
             nickName,
             article.getCreatedAt()
