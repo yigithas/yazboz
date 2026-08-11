@@ -3,18 +3,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchSliderArticles } from '../redux/articleSlice';
 import '../css/Slider.css';
 import ArticlesList from '../components/ArticlesList';
+import { useNavigate } from 'react-router-dom';
 
 function Anasayfa() {
   const BASE_BACKEND_URL = 'http://localhost:8081';
   const dispatch = useDispatch();
   
-
+  const navigate = useNavigate();
   const { sliderArticles, loading, error } = useSelector((state) => state.articles);
 
   useEffect(() => {
     dispatch(fetchSliderArticles());
   }, [dispatch]);
 
+  const visitArticle = (item)=>{
+    
+    navigate(`/article/${item.id}`)
+  }
   
   const duplicatedItems = sliderArticles.length > 0 
     ? [...sliderArticles, ...sliderArticles, ...sliderArticles] 
@@ -31,7 +36,8 @@ function Anasayfa() {
         ) : (
           <div className="slider-track">
             {duplicatedItems.map((item, index) => (
-              <div className="slider-card" key={index}>
+              
+              <div className="slider-card" key={index} onClick={()=>visitArticle(item)}>
                 <div className="card-image-wrapper">
                   <img 
                     src={item.imageUrl?.startsWith('http') ? item.imageUrl : `${BASE_BACKEND_URL}${item.imageUrl}`} 

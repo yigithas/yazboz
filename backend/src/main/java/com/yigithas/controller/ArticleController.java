@@ -2,6 +2,7 @@ package com.yigithas.controller;
 
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -37,8 +38,11 @@ public class ArticleController {
             @RequestParam("title") String title,
             @RequestParam("content") String content,
             @RequestParam("type") String type,
-            @RequestParam("writerId") Long writerId,
-            @RequestParam("image") MultipartFile imageFile) {
+            @RequestParam("image") MultipartFile imageFile,
+            Authentication authentication) { // Spring Security token'dan kullanıcıyı otomatik yakalar
+
+        // Token içindeki kullanıcı adı (username / nickname)
+        String username = authentication.getName();
 
         String imageUrl = fileStorageService.saveFile(imageFile);
 
@@ -48,7 +52,8 @@ public class ArticleController {
         article.setType(type);
         article.setImageUrl(imageUrl);
 
-        return ResponseEntity.ok(articleService.saveArticles(article, writerId));
+        // Servis katmanında username ile yazar bulunur
+        return ResponseEntity.ok(articleService.saveArticlesByUsername(article, username));
     }
 
     // 2. Slider İçin Son 3 Makale
@@ -66,7 +71,7 @@ public class ArticleController {
     }
 
     // 4. Detay Sayfası
-    @GetMapping("/{id}")
+    @GetMapping("/list/{id}")
     public ResponseEntity<ArticleDetailDto> getArticleById(@PathVariable Long id) {
         return ResponseEntity.ok(articleService.getArticleById(id));
     }

@@ -34,6 +34,19 @@ export const getPageableArticles = createAsyncThunk(
 }
 );
 
+export const getArticleDetail = createAsyncThunk(
+  'articles/getArticleDetail',
+  async (articleId,{rejectWithValue}) =>{
+    try{
+      const response = await axios.get(`${BASE_URL}/list/${articleId}`)
+      return response.data;
+    }
+    catch(error){
+    return rejectWithValue(error.response?.data ||'Makeleler getirelemedi');
+  }
+  }
+)
+
 // Yeni Makale Oluşturma (Multipart Form-Data & Token'lı)
 export const createArticle = createAsyncThunk(
   'articles/createArticle',
@@ -62,6 +75,7 @@ const articleSlice = createSlice({
     loading: false,
     error: null,
     articlesPage: null,
+    detailPage: null
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -102,6 +116,19 @@ const articleSlice = createSlice({
         state.articlesPage = action.payload;
       })
       .addCase(getPageableArticles.rejected, (state,action) =>{
+        state.loading = false;
+        state.error = action.payload;
+      })
+
+      .addCase(getArticleDetail.pending, (state) =>{
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getArticleDetail.fulfilled, (state,action) =>{
+        state.loading = false;
+        state.detailPage = action.payload;
+      })
+      .addCase(getArticleDetail.rejected, (state,action) =>{
         state.loading = false;
         state.error = action.payload;
       })

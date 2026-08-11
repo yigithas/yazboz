@@ -1,0 +1,164 @@
+/* Panel Ana Kapsayıcı */
+.panel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: calc(100vh - 80px);
+}
+
+/* Form Kartı - Taşmaları Engellemek İçin width & box-sizing eklendi */
+.panel-card {
+  background-color: #1a1f1d;
+  border: 1px solid #28362f;
+  border-radius: 12px;
+  padding: 32px;
+  width: 100%;
+  max-width: 650px;
+  box-sizing: border-box; /* Padding dahil genişlik hesabı */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Başlık */
+.panel-title {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #28362f;
+  padding-bottom: 12px;
+  word-break: break-word; /* Başlık taşarsa alt satıra geçer */
+}
+
+/* Form Alanı */
+.panel-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.form-label {
+  color: #2ecc71;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+/* Input, Select & Textarea - Yazının Alt Satıra Geçmesi İçin Düzenleme */
+.form-input,
+.form-select,
+.form-textarea {
+  background-color: #0d1110;
+  border: 1px solid #28362f;
+  border-radius: 8px;
+  color: #e0e6e3;
+  padding: 12px 14px;
+  font-size: 14.5px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* TEXTAREA: Uzun kelimelerin alt satıra geçmesini ve taşmamasını sağlar */
+.form-textarea {
+  resize: vertical;
+  line-height: 1.6;
+  white-space: pre-wrap;     /* Satır başlarını ve boşlukları korur, sığmayınca alta geçer */
+  overflow-wrap: break-word; /* Uzun kelimeleri kırar */
+  word-break: break-word;     /* Bitişik kelimelerin sağa taşmasını engeller */
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: #2ecc71;
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+}
+
+/* Dosya Yükleme Inputu */
+.form-file-input {
+  background-color: #0d1110;
+  border: 1px dashed #28362f;
+  border-radius: 8px;
+  color: #a0aab0;
+  padding: 10px;
+  font-size: 13.5px;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-file-input:hover {
+  border-color: #2ecc71;
+}
+
+/* GÖRSEL ÖNİZLEME ALANI (Görselin Boyuta Göre Tam Sığması İçin) */
+.image-preview-wrapper {
+  width: 100%;
+  max-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0d1110;
+  border: 1px solid #28362f;
+  border-radius: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.image-preview-wrapper img {
+  max-width: 100%;
+  max-height: 280px;
+  width: auto;
+  height: auto;
+  object-fit: contain; /* Boyut oranını bozmadan kutuya tam sığdırır */
+  border-radius: 6px;
+}
+
+/* Yayınla Butonu */
+.panel-submit-btn {
+  background-color: #2ecc71;
+  color: #0d1110;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: 10px;
+}
+
+.panel-submit-btn:hover:not(:disabled) {
+  background-color: #27ae60;
+  transform: translateY(-1px);
+}
+
+.panel-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Hata Mesajı */
+.panel-error-message {
+  margin-top: 16px;
+  background-color: rgba(255, 77, 79, 0.1);
+  border: 1px solid rgba(255, 77, 79, 0.3);
+  color: #ff4d4f;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  text-align: center;
+  word-break: break-word;
+}

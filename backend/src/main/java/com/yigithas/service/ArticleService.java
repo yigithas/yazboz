@@ -24,12 +24,11 @@ public class ArticleService {
     private final WritersRepository writersRepository;
 
     // Makale Kaydetme (Yazar ilişkisi ile)
-    public Articles saveArticles(Articles article, Long writerId) {
-        if (writerId != null) {
-            Writers writer = writersRepository.findById(writerId)
-                    .orElseThrow(() -> new RuntimeException("Yazar bulunamadı!"));
-            article.setWriters(writer);
-        }
+    public Articles saveArticlesByUsername(Articles article, String username) {
+        Writers writer = writersRepository.findByNickName(username) // veya findByUsername
+                .orElseThrow(() -> new RuntimeException("Kullanıcı bulunamadı: " + username));
+        
+        article.setWriters(writer);
         return articlesRepository.save(article);
     }
 

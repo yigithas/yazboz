@@ -1,9 +1,16 @@
 import React from 'react';
 import '../css/ArticleMini.css';
+import { useNavigate } from 'react-router-dom';
 
 
 function ArticlesMini({ article }) {
   const BASE_BACKEND_URL = 'http://localhost:8081';
+
+  const navigate = useNavigate();
+
+  const visitArticle = ()=>{
+    navigate(`/article/${article.id}`);
+  }
 
   return (
     <div className="article-mini-card">
@@ -19,7 +26,7 @@ function ArticlesMini({ article }) {
         <p className="mini-card-summary">{article.summary}</p>
         
         <div className="mini-card-footer">
-          <span className="read-more-btn">Devamını Oku &rarr;</span>
+          <span onClick={visitArticle} className="read-more-btn">Devamını Oku &rarr;</span>
         </div>
       </div>
     </div>

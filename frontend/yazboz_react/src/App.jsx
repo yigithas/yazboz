@@ -9,6 +9,8 @@ import Dijital from './pages/Dijital'
 import Login from './pages/Login'
 import Spor from './pages/Spor'
 import Tarih from './pages/Tarih'
+import Detail from './pages/Detail'
+import Panel from './pages/Panel'
 
 
 
@@ -26,6 +28,8 @@ function App() {
           <Route path='/dijital' element={<Dijital/>}/>
           <Route path='/diger' element={<Diger/>}/>
           <Route path='/login' element={<Login/>}/>
+          <Route path="/article/:id" element={<Detail/>} />
+          <Route path="/create-article" element={<Panel/>} />
         </Routes>
      </PageContainer>
     </>
