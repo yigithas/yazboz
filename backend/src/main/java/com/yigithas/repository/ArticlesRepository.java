@@ -10,4 +10,6 @@ public interface ArticlesRepository extends JpaRepository<Articles, Long> {
     
     // Slider için son yüklenen 3 makale
     List<Articles> findTop3ByOrderByCreatedAtDesc();
+    
+    List<Articles> findByType(String type);
 }

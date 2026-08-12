@@ -3,6 +3,7 @@ package com.yigithas.controller;
 import java.util.List;
 
 import org.springframework.security.core.Authentication;
+import org.apache.catalina.connector.Response;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -74,5 +75,10 @@ public class ArticleController {
     @GetMapping("/list/{id}")
     public ResponseEntity<ArticleDetailDto> getArticleById(@PathVariable Long id) {
         return ResponseEntity.ok(articleService.getArticleById(id));
+    }
+    
+    @GetMapping("/type/{type}")
+    public ResponseEntity<List<ArticleListDto>> getArticleByType(@PathVariable String type) {
+    	return ResponseEntity.ok(articleService.getArticleByType(type));
     }
 }

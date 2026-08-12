@@ -1,5 +1,6 @@
 package com.yigithas.service;
 
+import java.security.PublicKey;
 import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -52,5 +53,14 @@ public class ArticleService {
         Articles article = articlesRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Makale bulunamadı!"));
         return ArticleDetailDto.fromEntity(article);
+
+    }
+    
+    //Türe göre
+    public List<ArticleListDto> getArticleByType(String type) {
+    	return articlesRepository.findByType(type)
+    			.stream()
+                .map(ArticleListDto::fromEntity)
+                .toList();
     }
 }
