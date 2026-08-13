@@ -41,9 +41,11 @@ public class SecurityConfig {
 
             	    // Bütün GET isteklerine (Slider, Liste, Detay vb.) koşulsuz izin ver
             	    .requestMatchers(HttpMethod.GET, "/api/articles", "/api/articles/**").permitAll()
+            	    .requestMatchers(HttpMethod.GET, "/api/comments/**").permitAll()
 
             	    // Sadece makale ekleme/güncelleme/silme gibi POST/PUT/DELETE işlemleri JWT zorunlu
             	    .requestMatchers(HttpMethod.POST, "/api/articles/**").authenticated()
+            	    .requestMatchers(HttpMethod.POST, "/api/comments/**").authenticated()
             	    
             	    .anyRequest().authenticated()
             	)

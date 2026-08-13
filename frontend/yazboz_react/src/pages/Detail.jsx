@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getArticleDetail } from '../redux/articleSlice';
 import '../css/Detail.css';
 import { useParams } from 'react-router-dom';
+import Comment from '../components/Comment';
 
 function Detail() {
   const BASE_BACKEND_URL = 'http://localhost:8081';
@@ -42,6 +43,9 @@ function Detail() {
 
         <p className="detail-body">{detailPage.content}</p>
       </div>
+
+      {/* Yorumlar Bileşeni */}
+      <Comment articleId={id} />
     </div>
   );
 }
