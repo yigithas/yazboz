@@ -49,11 +49,16 @@ export const getArticleDetail = createAsyncThunk(
 
 export const getArticlesByType = createAsyncThunk(
   'articles/getByType',
-  async(articleType,{rejectWithValue}) => {
+  async({ type, page = 0, size = 10 },{rejectWithValue}) => {
     try{
-      const response = await axios.get(`${BASE_URL}/type/${articleType}`)
-      return response.data;
-    }
+      const response = await axios.get(`${BASE_URL}/type/${type}`,{
+      params: {
+        page : page,
+        size : size
+      }
+    });
+    return response.data;
+   }
     catch(error){
       return rejectWithValue(error.response?.data ||'Makeleler getirelemedi')
     }
@@ -86,6 +91,7 @@ const articleSlice = createSlice({
   initialState: {
     sliderArticles: [],
     typeArticles: [],
+    typeArticlesPageInfo: null,
     loading: false,
     error: null,
     articlesPage: null,
@@ -153,7 +159,8 @@ const articleSlice = createSlice({
       })
       .addCase(getArticlesByType.fulfilled, (state, action) => {
         state.loading = false;
-        state.typeArticles = action.payload;
+        state.typeArticles = action.payload.content;
+        state.typeArticlesPageInfo = action.payload;
       })
       .addCase(getArticlesByType.rejected, (state, action) => {
         state.loading = false;

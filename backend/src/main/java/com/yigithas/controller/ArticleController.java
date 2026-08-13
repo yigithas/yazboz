@@ -78,7 +78,10 @@ public class ArticleController {
     }
     
     @GetMapping("/type/{type}")
-    public ResponseEntity<List<ArticleListDto>> getArticleByType(@PathVariable String type) {
-    	return ResponseEntity.ok(articleService.getArticleByType(type));
+    public ResponseEntity<Page<ArticleListDto>> getArticles(
+    		@PathVariable String type,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+    	return ResponseEntity.ok(articleService.getArticleByType(type,page,size));
     }
 }

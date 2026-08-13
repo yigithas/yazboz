@@ -1,0 +1,104 @@
+/* Footer Ana Kapsayıcı */
+.site-footer {
+  background-color: #1a1f1d;
+  border-top: 1px solid #28362f;
+  color: #a0aab0;
+  padding-top: 40px;
+  margin-top: auto; /* Sayfanın en altına yapışmasını sağlar */
+  width: 100%;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 30px 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+}
+
+/* Sol Kısım Stilleri */
+.footer-logo {
+  color: #2ecc71;
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.footer-description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #8f9b95;
+  max-width: 380px;
+}
+
+/* Başlık Stilleri */
+.footer-title {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+/* Link Listesi Stilleri */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  color: #8f9b95;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #2ecc71;
+}
+
+/* Sosyal Medya Stilleri */
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-links a {
+  color: #8f9b95;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.social-links a:hover {
+  color: #2ecc71;
+}
+
+/* Alt Telif Kısımı */
+.footer-bottom {
+  border-top: 1px solid #28362f;
+  text-align: center;
+  padding: 18px 20px;
+  background-color: #0d1110;
+  font-size: 13px;
+  color: #6b7771;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+/* Mobil / Tablet Uyumluluğu (Responsive) */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}

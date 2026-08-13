@@ -57,10 +57,9 @@ public class ArticleService {
     }
     
     //Türe göre
-    public List<ArticleListDto> getArticleByType(String type) {
-    	return articlesRepository.findByType(type)
-    			.stream()
-                .map(ArticleListDto::fromEntity)
-                .toList();
+    public Page<ArticleListDto> getArticleByType(String type,int page, int size) {
+    	Pageable pageable = PageRequest.of(page, size,Sort.by("createdAt").descending());
+    	return articlesRepository.findByType(type, pageable)
+    			.map(ArticleListDto::fromEntity);
     }
 }

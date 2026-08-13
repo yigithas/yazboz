@@ -11,6 +11,7 @@ import Spor from './pages/Spor'
 import Tarih from './pages/Tarih'
 import Detail from './pages/Detail'
 import Panel from './pages/Panel'
+import Footer from './components/Footer'
 
 
 
@@ -31,6 +32,7 @@ function App() {
           <Route path="/article/:id" element={<Detail/>} />
           <Route path="/create-article" element={<Panel/>} />
         </Routes>
+        <Footer></Footer>
      </PageContainer>
     </>
   )
