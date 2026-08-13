@@ -15,4 +15,6 @@ public interface ArticlesRepository extends JpaRepository<Articles, Long> {
     List<Articles> findTop3ByOrderByCreatedAtDesc();
     
     Page<Articles> findByType(String type, Pageable pageable);
+    
+    Page<Articles> findByTitleContainingIgnoreCase(String keyword, Pageable pageable);
 }

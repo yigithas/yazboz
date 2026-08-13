@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { logout } from '../redux/authSlice';
+import Navbar from './Navbar';
 
 function Header() {
 
@@ -32,6 +33,9 @@ function Header() {
             <Link to="/dijital" className='selections'>Dijital</Link>
             <Link to="/diger" className='selections'>Diğer</Link>
         </div>
+
+        <Navbar></Navbar>
+
         <div>
             {token ? (
           <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>

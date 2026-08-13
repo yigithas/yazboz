@@ -12,7 +12,7 @@ import Tarih from './pages/Tarih'
 import Detail from './pages/Detail'
 import Panel from './pages/Panel'
 import Footer from './components/Footer'
-
+import SearchPage from './pages/SearchPage'
 
 
 function App() {
@@ -31,6 +31,7 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path="/article/:id" element={<Detail/>} />
           <Route path="/create-article" element={<Panel/>} />
+          <Route path="/search" element={<SearchPage />} />
         </Routes>
         <Footer></Footer>
      </PageContainer>

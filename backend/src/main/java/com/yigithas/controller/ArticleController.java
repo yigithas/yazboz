@@ -76,12 +76,21 @@ public class ArticleController {
     public ResponseEntity<ArticleDetailDto> getArticleById(@PathVariable Long id) {
         return ResponseEntity.ok(articleService.getArticleById(id));
     }
-    
+    // Türe göre 
     @GetMapping("/type/{type}")
     public ResponseEntity<Page<ArticleListDto>> getArticles(
     		@PathVariable String type,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
     	return ResponseEntity.ok(articleService.getArticleByType(type,page,size));
+    }
+    
+    //Arama
+    @GetMapping("/search")
+    public ResponseEntity<Page<ArticleListDto>> searchArticle(
+    		@RequestParam String keyword,
+    		@RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+    	return ResponseEntity.ok(articleService.searchArticle(keyword, page, size));
     }
 }

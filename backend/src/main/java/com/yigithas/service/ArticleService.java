@@ -62,4 +62,11 @@ public class ArticleService {
     	return articlesRepository.findByType(type, pageable)
     			.map(ArticleListDto::fromEntity);
     }
+    
+    public Page<ArticleListDto> searchArticle(String keyword,int page,int size){
+    	Pageable pageable = PageRequest.of(page, size,Sort.by("createdAt").descending());
+    	return articlesRepository.findByTitleContainingIgnoreCase(keyword, pageable)
+    			.map(ArticleListDto::fromEntity);
+    }
+    
 }

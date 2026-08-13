@@ -65,6 +65,26 @@ export const getArticlesByType = createAsyncThunk(
   }
 )
 
+export const searchArticlesByTitle = createAsyncThunk(
+  'articles/searchTitle',
+  async ({keyword,page = 0,size = 10} = {},{rejectWithValue}) => {
+    try{
+    const response = await axios.get(`${BASE_URL}/search`,{
+      params : {
+        keyword : keyword,
+        page : page,
+        size : size
+      }
+    });
+    return response.data;
+    }
+    catch(error){
+      return rejectWithValue(error.response?.data ||'Makeleler getirelemedi');
+    }
+  }
+)
+
+
 // Yeni Makale Oluşturma (Multipart Form-Data & Token'lı)
 export const createArticle = createAsyncThunk(
   'articles/createArticle',
@@ -91,7 +111,9 @@ const articleSlice = createSlice({
   initialState: {
     sliderArticles: [],
     typeArticles: [],
+    searchResults: [],
     typeArticlesPageInfo: null,
+    searchPageInfo: null,
     loading: false,
     error: null,
     articlesPage: null,
@@ -166,6 +188,23 @@ const articleSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
+
+      .addCase(searchArticlesByTitle.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        })
+      .addCase(searchArticlesByTitle.fulfilled, (state, action) => {
+        state.loading = false;
+  // Arama sonuçlarının içerik (dizi) kısmını saklıyoruz
+        state.searchResults = action.payload.content; 
+  // İleride arama sonuçlarında sayfalama yapabilmek için sayfa bilgilerini de tutabilirsin
+        state.searchPageInfo = action.payload; 
+        })
+      .addCase(searchArticlesByTitle.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+  })
+
       ;
   },
 });
