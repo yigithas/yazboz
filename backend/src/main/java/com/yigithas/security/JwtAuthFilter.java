@@ -1,9 +1,10 @@
 package com.yigithas.security;
 
 import java.io.IOException;
-import java.util.Collections;
+import java.util.List;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
@@ -39,11 +40,16 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             }
         }
 
-        // Kullanıcı doğrulandıysa ve güvenlik bağlamına (SecurityContext) henüz eklenmediyse
+        // Kullanıcı adı başarıyla çözüldüyse ve SecurityContext'te oturum yoksa
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             if (jwtService.validateToken(token, username)) {
+                // Spring Security'nin oturumu geçerli kabul etmesi için varsayılan bir rol veriyoruz:
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                        username, null, Collections.emptyList()); // Rol yapısı eklenebilir
+                        username,
+                        null,
+                        List.of(new SimpleGrantedAuthority("ROLE_USER"))
+                );
+                
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 
                 // Spring Security sistemine kullanıcının giriş yaptığını bildiriyoruz
