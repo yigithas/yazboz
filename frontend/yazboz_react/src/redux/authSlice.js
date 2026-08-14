@@ -31,8 +31,9 @@ const getUserFromToken = (token) => {
 };
 
 // İlk yüklenmede LocalStorage'daki token ve user verisi
-const initialToken = localStorage.getItem('token') || null;
-const initialUser = getUserFromToken(initialToken);
+const savedToken = localStorage.getItem('token') || null;
+const initialUser = getUserFromToken(savedToken);
+const initialToken = initialUser ? savedToken : null;
 
 // 1. Login Thunk
 export const loginUser = createAsyncThunk(

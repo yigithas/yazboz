@@ -35,6 +35,9 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Temiz CORS konfigürasyonu
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
+            	    // Preflight (CORS OPTIONS) isteklerine izin ver
+            	    .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
             	    // Auth ve Resim erişimleri
             	    .requestMatchers("/api/auth/**").permitAll()
             	    .requestMatchers("/uploads/**").permitAll()

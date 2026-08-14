@@ -90,12 +90,14 @@ export const createArticle = createAsyncThunk(
   'articles/createArticle',
   async (formData, { getState, rejectWithValue }) => {
     try {
-      // Token'ı Redux State'inden alıyoruz
-      const token = getState().auth.token;
+      // Token'ı Redux State'inden veya LocalStorage'dan alıyoruz
+      const token = getState().auth?.token || localStorage.getItem('token');
+      if (!token) {
+        return rejectWithValue('Makale paylaşmak için lütfen giriş yapınız.');
+      }
 
       const response = await axios.post(`${BASE_URL}/create`, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
         },
       });
