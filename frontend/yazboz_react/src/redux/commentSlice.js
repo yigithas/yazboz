@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8081/api/comments';
+const BASE_URL = 'https://yazboz-ab8o.onrender.com/api/comments';
 
 // 1. Makaleye Ait Yorumları Çekme
 export const fetchCommentsByArticle = createAsyncThunk(

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8081/api/articles';
+const BASE_URL = 'https://yazboz-ab8o.onrender.com/api/articles';
 
 // Slider Makalelerini Çekme
 export const fetchSliderArticles = createAsyncThunk(

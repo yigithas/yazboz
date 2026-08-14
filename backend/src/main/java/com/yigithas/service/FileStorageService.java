@@ -25,7 +25,7 @@ public class FileStorageService {
             Files.copy(file.getInputStream(), this.rootLocation.resolve(fileName));
 
             // Frontend'in erişebileceği URL'i dönüyoruz
-            return "http://localhost:8081/uploads/" + fileName;
+            return "https://yazboz-ab8o.onrender.com/uploads/" + fileName;
         } catch (Exception e) {
             throw new RuntimeException("Dosya yüklenemedi!", e);
         }

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 function ArticlesMini({ article }) {
-  const BASE_BACKEND_URL = 'http://localhost:8081';
+  const BASE_BACKEND_URL = 'https://yazboz-ab8o.onrender.com';
 
   const navigate = useNavigate();
 

@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode'; // 1. jwtDecode kütüphanesini import ettik
 
-const BASE_URL = 'http://localhost:8081/api/auth';
+const BASE_URL = 'https://yazboz-ab8o.onrender.com/api/auth';
 
 // Token'ı güvenli şekilde decode eden yardımcı fonksiyon
 const getUserFromToken = (token) => {

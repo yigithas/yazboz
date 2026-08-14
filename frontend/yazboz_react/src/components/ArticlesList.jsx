@@ -7,7 +7,7 @@ import { useState } from 'react';
 import "../css/ArticleMini.css";
 
 function ArticlesList() {
-    const BASE_BACKEND_URL = 'http://localhost:8081';
+    const BASE_BACKEND_URL = 'https://yazboz-ab8o.onrender.com';
     const dispatch = useDispatch();
 
     const {loading , error , articlesPage} = useSelector((store)=>store.articles);

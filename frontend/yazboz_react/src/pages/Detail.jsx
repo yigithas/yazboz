@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import Comment from '../components/Comment';
 
 function Detail() {
-  const BASE_BACKEND_URL = 'http://localhost:8081';
+  const BASE_BACKEND_URL = 'https://yazboz-ab8o.onrender.com';
 
   const {id} = useParams();
   const dispatch = useDispatch();

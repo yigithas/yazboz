@@ -8,7 +8,7 @@ import "../css/ArticleMini.css";
 
 function Diger() {
 
-  const BASE_BACKEND_URL = 'http://localhost:8081';
+  const BASE_BACKEND_URL = 'https://yazboz-ab8o.onrender.com';
   const dispatch = useDispatch();
   const {loading,error,typeArticles,typeArticlesPageInfo} = useSelector((store)=>store.articles);
   const [page, setPage] = useState(0);
