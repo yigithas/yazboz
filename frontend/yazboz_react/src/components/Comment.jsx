@@ -68,7 +68,7 @@ function Comment({ articleId: propArticleId }) {
       <div className={`comment-form-wrapper ${!isAuthenticated ? 'disabled-wrapper' : ''}`}>
         {!isAuthenticated && (
           <div className="comment-login-warning">
-            <span>🔒 Yorum yapmak için giriş yapmalısınız.</span>
+            <span> Yorum yapmak için giriş yapmalısınız.</span>
             <Link to="/login" className="comment-login-link">
               Giriş Yap
             </Link>
@@ -91,7 +91,7 @@ function Comment({ articleId: propArticleId }) {
 
           {addError && (
             <div className="comment-error-alert">
-              ⚠️ {typeof addError === 'string' ? addError : 'Yorum gönderilirken bir hata oluştu.'}
+               {typeof addError === 'string' ? addError : 'Yorum gönderilirken bir hata oluştu.'}
             </div>
           )}
 
