@@ -22,13 +22,13 @@ public class AuthController {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
 
-    // Yazar Kaydı (Register)
+    /*  Yazar Kaydı (Register)
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody Writers writer) {
         writer.setPassword(passwordEncoder.encode(writer.getPassword())); // Şifreyi BCrypt ile hash'le
         writersRepository.save(writer);
         return ResponseEntity.ok("Yazar başarıyla kaydedildi.");
-    }
+    }*/
 
     // Yazar Girişi ve JWT Alma (Login)
     @PostMapping("/login")
