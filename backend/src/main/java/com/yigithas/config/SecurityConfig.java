@@ -41,6 +41,7 @@ public class SecurityConfig {
             	    // Auth ve Resim erişimleri
             	    .requestMatchers("/api/auth/**").permitAll()
             	    .requestMatchers("/uploads/**").permitAll()
+                    .requestMatchers("/error").permitAll()
 
             	    // Bütün GET isteklerine (Slider, Liste, Detay vb.) koşulsuz izin ver
             	    .requestMatchers(HttpMethod.GET, "/api/articles", "/api/articles/**").permitAll()

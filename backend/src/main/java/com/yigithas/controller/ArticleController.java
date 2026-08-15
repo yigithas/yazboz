@@ -27,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/articles")
 @RequiredArgsConstructor 
-@CrossOrigin(origins = "*")
+
 public class ArticleController {
 
     private final ArticleService articleService;
